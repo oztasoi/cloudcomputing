@@ -52,15 +52,14 @@ app.get('/api', (req, res) => {
 // TODO:  Fill the values
 app.get('/api/profile', (req, res) => {
   res.json({
-    'name': '',
-    'homeCountry': '',
-    'degreeProgram': '',//informatics or CSE.. etc
-    'email': '',
+    'name': 'Michael Gerndt',
+    'homeCountry': 'Germany',
+    'degreeProgram': 'Informatics',//informatics or CSE.. etc
+    'email': 'michael.gerndt@tum.de',
     'deployedURLLink': '',//leave this blank for the first exercise
     'apiDocumentationURL': '', //leave this also blank for the first exercise
-    'currentCity': '',
-    'hobbies': []
-
+    'currentCity': 'Munich',
+    'hobbies': ['Virtualization', 'Software Deployment', 'Programming Models for Parallel Systems']
   })
 });
 /*
@@ -87,10 +86,6 @@ app.post('/api/books/', (req, res) => {
    * New Book information in req.body
    */
   console.log(req.body);
-  /*
-   * TODO: use the books model and create a new object
-   * with the information in req.body
-   */
   db.books.create(req.body).then(d=>res.json(d))
   /*
    * return the new book information object as json
@@ -108,10 +103,6 @@ app.put('/api/books/:id', (req, res) => {
   const bookId = req.params.id;
   const bookNewData = req.body;
   console.log(`book ID = ${bookId} \n Book Data = ${bookNewData}`);
-
-  /*
-   * TODO: use the books model and find using the bookId and update the book information
-   */
   /*
    * Send the updated book information as a JSON object
    */
@@ -129,10 +120,6 @@ app.delete('/api/books/:id', (req, res) => {
    */
   const bookId = req.params.id;
   /*
-   * TODO: use the books model and find using
-   * the bookId and delete the book
-   */
-  /*
    * Send the deleted book information as a JSON object
    */
   var deletedBook = db.books.findByIdAndDelete(bookId, function(err, deletedBook) {
@@ -146,7 +133,7 @@ app.delete('/api/books/:id', (req, res) => {
  * SERVER *
  **********/
 
-// listen on the port 3000
+// listen on the port 80
 app.listen(process.env.PORT || 80, () => {
   console.log('Express server is up and running on http://localhost:80/');
 });
