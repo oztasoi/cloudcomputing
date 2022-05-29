@@ -134,6 +134,8 @@ app.delete('/api/books/:id', (req, res) => {
  **********/
 
 // listen on the port 80
+const port = 80;
+const ip = '0.0.0.0';
 app.listen(process.env.PORT || 80, () => {
-  console.log('Express server is up and running on http://localhost:80/');
+  console.log(`Express server is up and running on http://${ip}:${port}/`);
 });
